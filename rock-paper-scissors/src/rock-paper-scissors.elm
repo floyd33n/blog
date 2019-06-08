@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Html exposing (..)
+import Random
 
 --MAIN--
 main : Program () Model Msg
@@ -26,12 +27,39 @@ init _ =
     )
 
 --UPDATE--
-type alias Msg =
-    Never
+genNumber : Cmd Msg
+genNumber =
+    Random.generate NewNumber (Random 1 3)
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+type Msg
+    = ChoiceRock
+    | ChoicePaper
+    | ChoiceScissors
+    | NewNumber Int
+
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        ChoiceRock ->
+            ( { model | myHand = 1 }
+            , genNumber
+            )
+
+        ChoicePaper  ->
+            ( { model | myHand = 2 }
+            , genNumber
+            )
+
+        ChoiceScissors  ->
+            ( { model | myHand = 3 }
+            , genNumber
+            )
+
+        NewNumber newNumber ->
+            ( { model | opponentHand = newNumber }
+            , Cmd.none
+            )
+
 
 --SUBSCRIPTIONS--
 subscriptions : Model -> Sub Msg
