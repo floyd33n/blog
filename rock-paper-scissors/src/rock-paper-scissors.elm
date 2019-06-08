@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Html exposing (..)
+import Html.Events exposing (..)
 import Random
 
 --MAIN--
@@ -72,8 +73,19 @@ view model =
     div []
         [ h1 [] [ text "Rock-paper-scissors" ]
         , h2 [] [ text "Choice your hand" ]
-        , button [] [ text "Rock" ]
-        , button [] [ text "Paper" ]
-        , button [] [ text "Scissors" ]
+        , button [ onClick ChoiceRock ] [ text "Rock" ]
+        , button [ onClick ChoicePaper ] [ text "Paper" ]
+        , button [ onClick ChoiceScissors ] [ text "Scissors" ]
         , h2 [] [ text "Result: " ]
+        , displayModelContents model
+        ]
+
+--DEBUG--
+--DEBUG--
+displayModelContents : Model -> Html Msg
+displayModelContents model =
+    div []
+        [ text "--debug--"
+        , p [] [ text ("opponentHand: " ++ (String.fromInt model.opponentHand)) ] 
+        , p [] [ text ("myHand: " ++ (String.fromInt model.myHand)) ]
         ]
