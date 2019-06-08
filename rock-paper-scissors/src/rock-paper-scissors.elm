@@ -15,11 +15,15 @@ main =
 
 --MODEL--
 type alias Model =
-    ()
+    { opponentHand : Int
+    , myHand : Int
+    }
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( (), Cmd.none )
+    ( Model 1 -1
+    , Cmd.none
+    )
 
 --UPDATE--
 type alias Msg =
