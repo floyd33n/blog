@@ -29,7 +29,7 @@ init _ =
 --UPDATE--
 genNumber : Cmd Msg
 genNumber =
-    Random.generate NewNumber (Random 1 3)
+    Random.generate NewNumber (Random.int 1 3)
 
 type Msg
     = ChoiceRock
