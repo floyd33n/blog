@@ -83,13 +83,13 @@ view model =
 displayResult : Model -> Html Msg
 displayResult  model =
     case model.myHand of
-        1->
+        1-> -- My hand is Rock
             div [] [ createResult model "Draw" "Lose" "Win" ]
         
-        2 ->
+        2 -> -- My hand is Paper
             div [] [ createResult model "Win" "Draw" "Lose" ]
         
-        3 ->
+        3 -> --My hand is Scissors
             div [] [ createResult model "Lose" "Win" "Draw" ]
 
         _ ->
