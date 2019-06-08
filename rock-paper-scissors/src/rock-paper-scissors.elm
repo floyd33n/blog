@@ -20,6 +20,7 @@ type alias Model =
     { opponentHand : Int
     , myHand : Int
     }
+-- 1:Rock, 2:Paper, 3:Scissors
 
 init : () -> ( Model, Cmd Msg )
 init _ =
