@@ -37,4 +37,11 @@ subscriptions model =
 --VIEW--
 view : Model -> Html Msg
 view model =
-    div [] []
+    div []
+        [ h1 [] [ text "Rock-paper-scissors" ]
+        , h2 [] [ text "Choice your hand" ]
+        , button [] [ text "Rock" ]
+        , button [] [ text "Paper" ]
+        , button [] [ text "Scissors" ]
+        , h2 [] [ text "Result: " ]
+        ]
