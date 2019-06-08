@@ -76,11 +76,29 @@ view model =
         , button [ onClick ChoiceRock ] [ text "Rock" ]
         , button [ onClick ChoicePaper ] [ text "Paper" ]
         , button [ onClick ChoiceScissors ] [ text "Scissors" ]
-        , h2 [] [ text "Result: " ]
+        , h2 [] [ displayResult model ]
         , displayModelContents model
         ]
 
---DEBUG--
+displayResult : Model -> Html Msg
+displayResult  model =
+    case model.myHand of
+        1->
+            div [] [ createResult model "Draw" "Lose" "Win" ]
+        
+        2 ->
+            div [] [ createResult model "Win" "Draw" "Lose" ]
+        
+        3 ->
+            div [] [ createResult model "Lose" "Win" "Draw" ]
+
+        _ ->
+            div [] [ text "Result: " ]
+
+createResult : Model -> String -> String -> String -> Html Msg
+createResult model vsRock vsPaper vsScissors =
+    text ("Result: " ++ (if model.opponentHand == 1  then  vsRock else (if model.opponentHand == 2 then vsPaper else vsScissors)))
+
 --DEBUG--
 displayModelContents : Model -> Html Msg
 displayModelContents model =
