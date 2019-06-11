@@ -1,3 +1,4 @@
+{-
 module Main exposing (..)
 
 import Browser
@@ -108,3 +109,4 @@ displayModelContents model =
         , p [] [ text ("opponentHand: " ++ (String.fromInt model.opponentHand)) ] 
         , p [] [ text ("myHand: " ++ (String.fromInt model.myHand)) ]
         ]
+-}
