@@ -94,56 +94,32 @@ view model =
         , h2 [] [ text ("Result: " ++ (createResult model)) ]
         ]
 
-{-
-displayResult : Model -> Html Msg
-displayResult model =
-    case model.myHand of
-        Rock ->
-            div [] [ createResult model "Draw" "Lose" "Win" ]
-
-        Paper ->
-            div [] [ createResult model "Win" "Draw" "Lose" ]
-
-        Scissors ->
-            div [] [ createResult model "Lose" "Win" "Draw" ]
-
-createResult : Model -> String -> String -> String -> Html Msg
-createResult model vsRock vsPaper vsScissors =
-    text ("Result: " ++ (if model.opponentHand == Rock  then  vsRock else (if model.opponentHand == Paper then vsPaper else vsScissors)))
--}
-
 createResult : Model -> String
 createResult model =
-    case model.myHand of
-        Rock ->
-            case model.opponentHand of
-                Rock ->
-                    "Draw"
-                
-                Paper ->
-                    "Lose"
-                
-                Scissors ->
-                    "Win"
-        
-        Paper ->
-            case model.opponentHand of
-                Rock ->
-                    "Win"
-                
-                Paper ->
-                    "Draw"
-                
-                Scissors ->
-                    "Lose"
-        
-        Scissors ->
-            case model.opponentHand of
-                Rock ->
-                    "Lose"
+    case (model.myHand, model.opponentHand) of
+        (Rock, Rock) ->
+            "Draw"
 
-                Paper ->
-                    "Win"
-                
-                Scissors ->
-                    "Draw"
+        (Rock, Paper) ->
+            "Lose"
+
+        (Rock, Scissors) ->
+            "Win"
+        
+        (Paper, Rock) ->
+            "Win"
+        
+        (Paper, Paper) ->
+            "Draw"
+
+        (Paper, Scissors) ->
+            "Lose"
+        
+        (Scissors, Rock) ->
+            "Lose"
+
+        (Scissors, Paper) ->
+            "Win"
+        
+        (Scissors, Scissors) ->
+            "Draw"
